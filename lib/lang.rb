@@ -53,9 +53,13 @@ module Lang
     'Bishop',
     'Knight',
     'CAPTURE',
-    'CASTLING'
+    'CASTLING',
+    'White King is checked!',
+    'Black King is checked!',
+    'Both Kings are checked!',
 
-  ] # 52
+
+  ] # 55
 
   DE = [
     'Schach',
@@ -110,9 +114,12 @@ module Lang
     'Läufer',
     'Springer',
     'SCHLÄGT',
-    'ROCHADE'
+    'ROCHADE',
+    'Weisser König schach!',
+    'Schwarzer König schach!',
+    'Beide Könige schach!',
 
-  ] # 52
+  ] # 55
 
   $string = EN
 

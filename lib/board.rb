@@ -165,11 +165,11 @@ class Board
     blackKing = find_king('black')
 
     if whiteKing.piece.check
-      'White King is checked!'
+      $string[53]
     elsif blackKing.piece.check
-      'Black King is checked!'
+      $string[54]
     else
-      'Both Kings are checked!'
+      $string[55]
     end
   end
 
