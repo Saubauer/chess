@@ -5,6 +5,7 @@ class Board
   def initialize
     @X_HASH = Hash['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5, 'f' => 6, 'g' => 7, 'h' => 8]
     @grid = map_grid
+    @POS_HASH = map_hash
     @whitePieces = []
     @blackPieces = []
     @deadPieces = []
@@ -97,7 +98,7 @@ class Board
         normal_moves["#{piece.symbol + pos} => #{pos2}"] = [pos, pos2] if find_pos(pos2).piece.nil?
       end
     end
-    choices.merge(urgent_moves, capture_moves, special_moves, normal_moves)
+    choices.merge(urgent_moves).merge(capture_moves).merge(special_moves).merge(normal_moves) #for old ruby version
   end
 
   def promotion
@@ -208,6 +209,16 @@ class Board
 
   private
 
+  def map_hash
+    hash = {}
+    @grid.each {|y|
+    y.each {|cell|
+        hash[cell.position] = cell.coords
+      }
+    }
+    hash
+  end
+
   def map_grid
     grid = []
     y = 1
@@ -287,12 +298,8 @@ class Board
   end
 
   def find_pos(pos)
-    @grid.each do |y|
-      y.each do |x|
-        return x if pos == x.position
-      end
-    end
-    false
+    return false if !@POS_HASH.include?(pos)
+    return @grid[@POS_HASH[pos].first][@POS_HASH[pos].last]
   end
 
   def find_king(color)

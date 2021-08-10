@@ -25,12 +25,8 @@ class Piece
   private
 
   def find_cell(coords, grid)
-    grid.each do |y|
-      y.each  do |x|
-        return x if x.coords == coords
-      end
-    end
-    false
+    return false if coords.first < 0 || coords.first > 7 || coords.last < 0 || coords.last > 7
+    grid[coords.first][coords.last]
   end
 
   def rook_moves(coords, grid)
