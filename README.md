@@ -1,6 +1,6 @@
 # Ruby terminal chess
 Ruby terminal chess for Odin Project.
-
+Live Version : https://replit.com/@Saubauer/chess
 ## Installation
 - clone repo
 - run "bundle install"
